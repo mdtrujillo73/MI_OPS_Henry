@@ -9,7 +9,7 @@ app = FastAPI()
 
 play_genre = pd.read_csv('Funcion_1.csv', low_memory=False)
 
-app.get("/release_year/{genre}", name='año con mas horas jugadas para el género ingresado')
+@app.get("/release_year/{genre}", name='año con mas horas jugadas para el género ingresado')
 
 def PlayTimeGenre(genre: str):
    
