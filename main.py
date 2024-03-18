@@ -82,6 +82,7 @@ def UsersNotRecommend(posted: int):
         top_3_dict[puesto] = row['app_name']
 
     return top_3_dict
+@app.get("/Sentiment_Analysis/{release_year}", name='devuelve la cantidad de registros de reseñas de usuarios, Negativos, Positivos y Nulos por año de lanzamiento')
 def Sentiment_Analysis(release_year: int):
     # Filtrar el DataFrame para obtener las filas que coinciden con el release_year dado
     filas_coincidentes = sentiment_analysis[sentiment_analysis['release_year'] == release_year]
