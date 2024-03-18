@@ -27,7 +27,7 @@ def PlayTimeGenre(genre: str):
 
 @app.get("/user_for_genre/{genre}", name='a usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.')
 
-def UserForGenre(genero):
+def UserForGenre(genero:str):
 
     genre_data = user_for_genre[user_for_genre['genre'] == genero]
 
@@ -48,7 +48,7 @@ def UserForGenre(genero):
     return result
 
 @app.get("/UsersRecommend/{posted}", name='top 3 de juegos MÁS recomendados por usuarios para el año dado.')
-def UsersRecommend(posted):
+def UsersRecommend(posted:int):
     # Filtrar el DataFrame por el año dado
     df_año = users_recommend[users_recommend['posted'] == posted]
 
