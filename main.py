@@ -10,6 +10,7 @@ app = FastAPI()
 play_genre = pd.read_csv('Funcion_1.csv', low_memory=False)
 user_for_genre = pd.read_csv('Funcion_2_jup.csv', low_memory=False)
 users_recommend = pd.read_csv('Funcion_3_jup.csv', low_memory=False)
+users_not_recommend = pd.read_csv('Funcion_4_jup.csv', low_memory=False)
 
 @app.get("/release_year/{genre}", name='año con mas horas jugadas para el género ingresado')
 
