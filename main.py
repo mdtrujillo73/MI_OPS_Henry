@@ -12,6 +12,7 @@ user_for_genre = pd.read_csv('Funcion_2_jup.csv', low_memory=False)
 users_recommend = pd.read_csv('Funcion_3_jup.csv', low_memory=False)
 users_not_recommend = pd.read_csv('Funcion_4_jup.csv', low_memory=False)
 sentiment_analysis = pd.read_csv('Funcion_5_jup.csv', low_memory=False)
+sentiment_analysis  = sentiment_analysis.drop('Unnamed: 0', axis=1)
 
 @app.get("/release_year/{genre}", name='año con mas horas jugadas para el género ingresado')
 
