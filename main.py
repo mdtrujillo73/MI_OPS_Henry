@@ -64,4 +64,4 @@ def UsersRecommend(posted:int):
         puesto = "Puesto " + str(i + 1 - top_3_df.index[0])
         top_3_dict[puesto] = row['app_name']
 
-    return top_3_dict
+    return "El top 3 son: "+ top_3_dict
