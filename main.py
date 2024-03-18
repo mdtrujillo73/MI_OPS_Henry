@@ -44,3 +44,4 @@ def UserForGenre(genero):
         "Usuario con más horas jugadas para " + genero: max_playtime_user,
         "Horas jugadas": [{"Año": year, "minutos": hours} for year, hours in zip(grouped['posted'], grouped['playtime_forever'])]
     }
+    return result
