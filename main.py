@@ -11,6 +11,7 @@ play_genre = pd.read_csv('Funcion_1.csv', low_memory=False)
 user_for_genre = pd.read_csv('Funcion_2_jup.csv', low_memory=False)
 users_recommend = pd.read_csv('Funcion_3_jup.csv', low_memory=False)
 users_not_recommend = pd.read_csv('Funcion_4_jup.csv', low_memory=False)
+sentiment_analysis_5 = pd.read_csv('Funcion_5_jup.csv', low_memory=False)
 
 @app.get("/release_year/{genre}", name='año con mas horas jugadas para el género ingresado')
 
@@ -81,3 +82,11 @@ def UsersNotRecommend(posted: int):
         top_3_dict[puesto] = row['app_name']
 
     return top_3_dict
+def Sentiment_Analysis(release_year: int):
+    # Filtrar el DataFrame para obtener las filas que coinciden con el release_year dado
+    filas_coincidentes = sentiment_analysis[sentiment_analysis['release_year'] == release_year]
+    
+    # Convertir las filas coincidentes a una lista de diccionarios
+    filas_lista = filas_coincidentes.to_dict(orient='records')
+    
+    return filas_lista
