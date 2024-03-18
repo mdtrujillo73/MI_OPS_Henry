@@ -63,9 +63,7 @@ def UsersRecommend(posted:int):
     for i, row in top_3_df.iterrows():
         puesto = "Puesto " + str(i + 1 - top_3_df.index[0])
         top_3_dict[puesto] = row['app_name']
-    result="El top 3 más recomendados son: "+ top_3_dict
-
-    return result
+    return top_3_dict
 
 @app.get("/UsersNotRecommend/{posted}", name='top 3 de juegos MENOS recomendados por usuarios para el año dado.')
     
@@ -84,6 +82,4 @@ def UsersNotRecommend(posted: int):
     for i, row in top_3_df.iterrows():
         puesto = "Puesto " + str(i + 1 - top_3_df.index[0])
         top_3_dict[puesto] = row['app_name']
-    result= "el top 3 menos recomendados son:"+top_3_dict
-
-    return result
+    return top_3_dict
