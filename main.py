@@ -8,6 +8,7 @@ import joblib
 app = FastAPI()
 
 play_genre = pd.read_csv('Funcion_1.csv', low_memory=False)
+user_for_genre = pd.read_csv('Funcion_2_jup.csv', low_memory=False)
 
 @app.get("/release_year/{genre}", name='año con mas horas jugadas para el género ingresado')
 
@@ -25,7 +26,7 @@ def PlayTimeGenre(genre: str):
 
 @app.get("/user_for_genre/{genre}", name='a usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.')
 
-def UserForGenre(genero: str):
+def UserForGenre(gen: str):
 
     genre_data = user_for_genre[user_for_genre['genre'] == genero]
 
