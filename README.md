@@ -1,79 +1,56 @@
-# Data Projects + Tutorial Render y FastAPI
-![logo](https://builtin.com/sites/www.builtin.com/files/styles/og/public/2022-11/data-science-projects.jpg)
+# README para Proyecto de Sistema de Recomendación de Videojuegos en Steam #
+¡Bienvenido al proyecto de Sistema de Recomendación de Videojuegos en Steam!
 
-# Como levantar un proyecto de Data general
+# Descripción del Problema #
+En este proyecto, nos enfrentamos al desafío de crear un sistema de recomendación de videojuegos para usuarios de la plataforma Steam. El contexto involucra la necesidad de trabajar con datos de baja calidad y estructura, lo que requiere un enfoque exhaustivo desde la ingeniería de datos hasta el despliegue de un modelo de aprendizaje automático funcional.
 
-## 1) Crear entorno virtual
-Todas las dependencias y librerías van a quedar instaladas acá:
-```
-python -m venv venv
-```
-Esto nos posibilita solo trabajar con las librerías necesarias del proyecto, y no con todas las que se tengan instaladas localmente. Permite que otros usuarios o compañeros de trabajo puedan replicar e instalar sencillamente lo mismo que nosotros, y que no interfiera con las cosas que tengan también previamente descargadas. 
 
-## 2) Crear archivos necesarios
-Desde la consola Gitbash:
-```
-touch .gitignore
-touch main.py
-touch requirements.txt
-```
-## 3) venv + .gitignore
-Poner el entorno virtual dentro del archivo .gitignore:
-```
-/venv
-```
-Si no funciona, probar de distintas formas:
-```
-/venv
-venv
-venv/
+# Feature Engineering: # 
+Se creará la columna 'sentiment_analysis' aplicando análisis de sentimiento con NLP para categorizar las reseñas de los usuarios en negativas, neutrales o positivas. Esta columna reemplazará la columna de reseñas originales para facilitar el trabajo de los modelos de ML y el análisis de datos.
 
-```
+# Transformaciones #
+En primer lugar se procede a abrir los datasets y transformar del formato json a csv. En esta etapa se procede a desanidar los campos necesarios para su posterior utilización en las funciones. 
 
-# Tutorial de Render y FastApi
+# Desarrollo API #
+Se disponibilizan los datos de la empresa usando el framework FastAPI. Para acceder utilice el siguiente link:
 
-![image](images/fastapi.png)
+https://mi-ops-henry.onrender.com/docs#
 
-## Git init + Instalaciones
-Desde la misma terminal de VSCode, realizar los siguientes pasos:
-```
-git init
-pip install uvicorn
-pip install fastapi
-```
-Cualquier otra librería que se vaya a utilizar también puede ser descargada en este momento, o cuando sea necesario.
+  1) def PlayTimeGenre( genero : str ): Debe devolver año con mas horas jugadas para dicho género.
+  Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
+  
+  2) def UserForGenre( genero : str ): Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
+  Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas:   23}]}
+  
+  3) def UsersRecommend( año : int ): Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos/neutrales)
+  Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+  
+  4) def UsersNotRecommend( año : int ): Devuelve el top 3 de juegos MENOS recomendados por usuarios para el año dado. (reviews.recommend = False y comentarios negativos)
+  Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+  
+  5) def sentiment_analysis( año : int ): Según el año de lanzamiento, se devuelve una lista con la cantidad de registros de reseñas de usuarios que se encuentren    
+   categorizados con un análisis de sentimiento. Ejemplo de retorno: {Negative = 182, Neutral = 120, Positive = 278}
 
-## Pip freeze
-Una vez que ya están todas las librerías descargadas en nuestro entorno virtual, podemos hacer el freeze de los requirements.  
- Es importante para este tutorial no abusar de demasiadas dependencias, porque en algunos casos, luego las aplicaciones no pueden deployar nuestros modelos. 
-```
-pip freeze > requirements.txt
-```
-Si luego se necesita instalar otra librería más, se vuelve a ejecutar este comando.  
+# Deployment #
+Se realizará el despliegue de la API utilizando servicios como Render o Railway para permitir que sea accesible desde cualquier dispositivo conectado a internet.
 
-Cualquier persona que quiera usar nuestro código, va a poder instalar lo mismo que instalamos nosotros. 
-## main.py
-Ahora ya esta listo para poder codear toda tu API con Fastapi.
-## Creación repo Github
-Para más información, se puede leer el documento en el siguiente [enlace](https://drive.google.com/file/d/1lzKIUTFJ2lnKluZ21hfResGvTJU7fA2k/view?usp=sharing)
-- Crear un nuevo repo en Github. Dejarlo en modo público.
-![image](images/repo.jpg)
-- Seguir los pasos para conectarlo con nuestro repositorio local
-![image](images/steps.jpg)
-## Render
-1. Entrar en `render.com` y crearse una nueva cuenta de usuario. 
-2. Elegir la opción `Web Service`
-3. Ir al apartado que se encuentra abajo de `Public Git repository`. Copiar y pegar el enlace del repositorio que crearon anteriormente (recuerden que sea público).
-![image](images/public.jpg)
-4. Llenar los campos necesarios. En branch seleccionen `main`. Runtime tiene que ser `Python 3`.
-![image](images/fill.jpg)
-5. El resto de los campos se deben llenar con la misma información que en la imagen:
-![image](images/campos.jpg)
-6. Seleccionar la opción `Create Web Service`
-7. Una vez terminados los pasos anteriores, se va a comenzar a cargar nuestra aplicación. Puede tardar unos minutos. 
-![image](images/logs.jpg)
-8. Entrar al enlace de arriba a la izquierda:
-![image](images/enlace.jpg)
-9. Nos va a direccionar a nuestra API. Si les aparece un "Not found", no se preocupen, agreguenle un /docs a su enlace.
+# Análisis Exploratorio de Datos (EDA) #
+Se realiza un análisis exhaustivo de los datos para investigar las relaciones entre las variables, identificar outliers o anomalías, y descubrir patrones interesantes que puedan influir en el sistema de recomendación.
 
-Con todos esos pasos, la API que crearon ya está lista para poder ser consumida!
+Se cuenta con un total de 32,133 juegos y 58,459 usuarios, entre los cuales 25,485 usuarios han dejado 58,431 comentarios sobre los juegos. Posteriormente, se lleva a cabo un análisis para identificar las variables más importantes para la recomendación, categorizándolas y presentándolas en gráficos. Debido a que este es un MVP, se ha reducido el conjunto de variables utilizadas en el modelo de aprendizaje automático al mínimo necesario según las recomendaciones básicas de la librería "surprise", que incluyen user_id, item_id y sentiment, representando la "puntuación" del usuario hacia un juego determinado obtenida a través del análisis de sentimiento, con opciones de puntuación negativa, neutra o positiva.
+
+# Modelo de Aprendizaje Automático #
+Se implementa al menos uno de los dos sistemas de recomendación propuestos: ítem-ítem. El modelo entrenado se guardo con la librería joblib, obteniendo un archivo .pkl que será consumido por la función de recomendación. 
+
+Para probar el sistema de recomendación, se puede abrir el documento df_ML.csv provisto en Github y elegir un usuario o probar con los siguientes usuarios:
+
+evcentric, js41637, ApxLGhost, 72947282842, wayfeng, pikawuu2, Sammeh00, Michaelele, 76561197970982479
+
+# Video #
+Se realiza un video explicativo mostrando el funcionamiento de la API y una breve explicación del modelo de ML entrenado. En el enlace puede ver un video de la API en Render y su funcionamieto
+
+## requirements.txt
+En este archivo de texto se colocan las librías que son necesarias para que la API funcione correctamente. 
+
+## .gitignore
+Permite que Render ignore los archivos que se contienen aquí pero que puedan permanecer en el repositorio.  
