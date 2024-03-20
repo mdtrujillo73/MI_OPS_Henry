@@ -98,7 +98,7 @@ def Sentiment_Analysis(release_year: int):
 def recomendacion_usuario(user_id: str):
     user_id_=str(user_id)
     entro =False
-    while entro==False:
+    while entro=False:
         recomendaciones_usuario = df_E.loc[df_E['user_id'] == user_id_, 'recomendaciones']
         entro=True
     return str(recomendaciones_usuario)
