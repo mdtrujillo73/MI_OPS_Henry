@@ -13,6 +13,7 @@ users_recommend = pd.read_csv('Funcion_3_jup.csv', low_memory=False)
 users_not_recommend = pd.read_csv('Funcion_4_jup.csv', low_memory=False)
 sentiment_analysis = pd.read_csv('Funcion_5_jup.csv', low_memory=False)
 sentiment_analysis  = sentiment_analysis.drop('Unnamed: 0', axis=1)
+df_E=pd.read_csv('ML_recommendations500.csv')
 #modelo_svd = joblib.load('modelo_svd_I.pkl')
 
 @app.get("/release_year/{genre}", name='año con mas horas jugadas para el género ingresado')
@@ -96,6 +97,5 @@ def Sentiment_Analysis(release_year: int):
 @app.get("/recomendacion_usuario/{user_id}", name='devuelve lista con 5 juegos recomendados para dicho usuario.')
 def recomendacion_usuario(user_id: int):
     user_id_=str(user_id)
-    df_E=pd.read_csv('ML_recommendations500.csv')
     recomendaciones_usuario = df_E.loc[df_E['user_id'] == user_id_, 'recomendaciones']
     return str(recomendaciones_usuario)
