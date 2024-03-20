@@ -119,3 +119,4 @@ def recomendacion_usuario(user_id: object):
         "A usuarios que son similares a":user_id, 
         "también les gustó estos 5 juegos": recommended_games,
          
+    }
