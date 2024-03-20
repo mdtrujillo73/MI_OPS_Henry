@@ -93,7 +93,7 @@ def Sentiment_Analysis(release_year: int):
     filas_lista = filas_coincidentes.to_dict(orient='records')
     
     return filas_lista
-@app.get("/recomendacion_usuario/{user_id}", name='devuelve lista con 5 juegos recomendados para dicho usuario.')
+#@app.get("/recomendacion_usuario/{user_id}", name='devuelve lista con 5 juegos recomendados para dicho usuario.')
 
 
 #def recomendacion_usuario(user_id: object):
