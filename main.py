@@ -4,6 +4,7 @@ import pandas as pd
 from fastapi import FastAPI
 import uvicorn 
 import joblib
+import surprise
 
 app = FastAPI()
 
