@@ -95,7 +95,7 @@ def Sentiment_Analysis(release_year: int):
     
     return filas_lista
 @app.get("/recomendacion_usuario/{user_id}", name='devuelve lista con 5 juegos recomendados para dicho usuario.')
-def recomendacion_usuario(user_id: int):
+def recomendacion_usuario(user_id: str):
     user_id_=str(user_id)
     recomendaciones_usuario = df_E.loc[df_E['user_id'] == user_id_, 'recomendaciones']
     return str(recomendaciones_usuario)
