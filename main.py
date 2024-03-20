@@ -93,28 +93,9 @@ def Sentiment_Analysis(release_year: int):
     filas_lista = filas_coincidentes.to_dict(orient='records')
     
     return filas_lista
-#@app.get("/recomendacion_usuario/{user_id}", name='devuelve lista con 5 juegos recomendados para dicho usuario.')
-#def recomendacion_usuario(user_id: object):
-#    top=5
-
-    # Obtener los juegos que el usuario no ha visto aún
-#    games_play = set(df[df['user_id'] == user_id]['item_id'])
-#    games_all = set(df['item_id'])
-#    games_unplay = list(games_all - games_play)
-
-    # Obtener las recomendaciones
-#    predicted_ratings = [modelo_svd.predict(user_id, item_id).est for item_id in games_unplay]
-
-    # Ordenar los juegos según su predicción de rating
-#    games_rating = list(zip(games_unplay, predicted_ratings))
-#    games_rating.sort(key=lambda x: x[1], reverse=True)
-
-    # Obtener los títulos de los juegos recomendadas
-#    recommended_games = games_rating[:top]
-#    recommended_games = [df[df['item_id'] == item_id]['app_name'].iloc[0] for item_id, _ in recommended_games]
-
-#    return {
-#        "A usuarios que son similares a":user_id, 
-#        "también les gustó estos 5 juegos": recommended_games,
-#         
-#    }
+@app.get("/recomendacion_usuario/{user_id}", name='devuelve lista con 5 juegos recomendados para dicho usuario.')
+def recomendacion_usuario(user_id: int):
+    user_id_=str(user_id)
+    df_E=pd.read_csv('ML_recommendations500.csv')
+    recomendaciones_usuario = df_E.loc[df_E['user_id'] == user_id_, 'recomendaciones']
+    return str(recomendaciones_usuario)
