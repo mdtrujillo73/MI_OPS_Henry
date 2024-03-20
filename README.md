@@ -14,7 +14,7 @@ En primer lugar se procede a abrir los datasets y transformar del formato json a
 # Desarrollo API #
 Se disponibilizan los datos de la empresa usando el framework FastAPI. Para acceder utilice el siguiente link:
 
-https://mi-ops-henry.onrender.com/docs#
+https://mi-ops-henry.onrender.com/docs#/
 
   1) def PlayTimeGenre( genero : str ): Debe devolver año con mas horas jugadas para dicho género.
   Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
@@ -30,6 +30,7 @@ https://mi-ops-henry.onrender.com/docs#
   
   5) def sentiment_analysis( año : int ): Según el año de lanzamiento, se devuelve una lista con la cantidad de registros de reseñas de usuarios que se encuentren    
    categorizados con un análisis de sentimiento. Ejemplo de retorno: {Negative = 182, Neutral = 120, Positive = 278}
+  6) def recomendacion_juego( id de producto ): Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
 
 # Deployment #
 Se realizará el despliegue de la API utilizando servicios como Render o Railway para permitir que sea accesible desde cualquier dispositivo conectado a internet.
