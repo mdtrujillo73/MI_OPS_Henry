@@ -98,4 +98,4 @@ def Sentiment_Analysis(release_year: int):
 def recomendacion_usuario(user_id: str):
     user_id_=str(user_id)
     recomendaciones_usuario = df_E.loc[df_E['user_id'] == user_id_, 'recomendaciones']
-    return str(recomendaciones_usuario)
+    return str(recomendaciones_usuario.values[0])
