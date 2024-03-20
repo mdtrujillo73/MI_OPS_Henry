@@ -48,7 +48,7 @@ Para probar el sistema de recomendación, se puede abrir el documento df_ML.csv 
 evcentric, js41637, ApxLGhost, 72947282842, wayfeng, pikawuu2, Sammeh00, Michaelele, 76561197970982479
 
 # Video #
-Se realiza un video explicativo mostrando el funcionamiento de la API y una breve explicación del modelo de ML entrenado. En el enlace puede ver un video de la API en Render y su funcionamieto
+Se realiza un video explicativo mostrando el funcionamiento de la API y una breve explicación del modelo de ML entrenado. En el enlace puede ver un video de la API en Render y su funcionamieto en https://youtu.be/bXDlHXdmP14?si=JdOgV2SXADGVqxoS
 
 ## requirements.txt
 En este archivo de texto se colocan las librías que son necesarias para que la API funcione correctamente. 
